@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
     os.environ.get("ALLOWED_LIST")
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+CSRF_TRUSTED_ORIGINS = ["https://8000-emidiovaler-djangomicro-ez4ajwiarzy.ws-eu108.gitpod.io"]
 
 # Application definition
 
