@@ -1,8 +1,11 @@
+from random import choice
+
 from rest_framework import viewsets
 from rest_framework import status
+from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import Product
+from .models import Product, User
 from .serializers import ProductSerializer
 
 class ProductViewSet(viewsets.ModelViewSet):
@@ -20,3 +23,12 @@ class ProductViewSet(viewsets.ModelViewSet):
             return super().destroy(request, *args, **kwargs)
         except Product.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+class UserAPIView(APIView):
+    def get(self, _):
+        users = User.objects.all()
+        user = choice(users)
+        return Response(
+            {"id": user.id}
+        )
